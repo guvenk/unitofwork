@@ -10,16 +10,16 @@ namespace UnitOfWork
     {
         void Delete(TEntity entityToDelete);
 
-        Task Delete(object id);
+        Task DeleteAsync(object id);
 
-        Task<IEnumerable<TEntity>> Get(
+        Task<IEnumerable<TEntity>> GetAsync(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "");
 
-        Task<TEntity> GetById(object id);
+        Task<TEntity> GetByIdAsync(object id);
 
-        Task<IEnumerable<TEntity>> GetWithRawSql(string query, params object[] parameters);
+        Task<IEnumerable<TEntity>> GetWithRawSqlAsync(string query, params object[] parameters);
 
         void Insert(TEntity entity);
 

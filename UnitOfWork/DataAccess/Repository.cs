@@ -18,10 +18,10 @@ namespace UnitOfWork
             dbSet = dbContext.Set<TEntity>();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetWithRawSql(string query, params object[] parameters)
+        public virtual async Task<IEnumerable<TEntity>> GetWithRawSqlAsync(string query, params object[] parameters)
             => await dbSet.FromSqlRaw(query, parameters).ToListAsync();
 
-        public virtual async Task<IEnumerable<TEntity>> Get(
+        public virtual async Task<IEnumerable<TEntity>> GetAsync(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             string includeProperties = "")
@@ -44,13 +44,13 @@ namespace UnitOfWork
                 return await query.ToListAsync();
         }
 
-        public virtual async Task<TEntity> GetById(object id) => await dbSet.FindAsync(id);
+        public virtual async Task<TEntity> GetByIdAsync(object id) => await dbSet.FindAsync(id);
 
         public virtual void Insert(TEntity entity) => dbSet.Add(entity);
 
         public virtual void Insert(IEnumerable<TEntity> entities) => dbSet.AddRange(entities);
 
-        public virtual async Task Delete(object id)
+        public virtual async Task DeleteAsync(object id)
         {
             TEntity entityToDelete = await dbSet.FindAsync(id);
             Delete(entityToDelete);

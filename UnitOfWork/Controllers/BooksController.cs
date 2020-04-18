@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace UnitOfWork.Controllers
 {
@@ -20,9 +16,9 @@ namespace UnitOfWork.Controllers
 
         [HttpGet]
         [Route("")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var result = _unitOfWork.BookRepository.Get();
+            var result = await _unitOfWork.BookRepository.GetAsync();
             return Ok(result);
         }
     }

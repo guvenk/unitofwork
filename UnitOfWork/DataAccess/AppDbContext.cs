@@ -5,7 +5,9 @@ namespace UnitOfWork
 {
     public partial class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -89,7 +91,6 @@ namespace UnitOfWork
             };
 
             builder.Entity<Book>().HasData(books);
-
         }
     }
 }
