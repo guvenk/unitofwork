@@ -15,8 +15,7 @@ namespace UnitOfWork.Controllers
         }
 
         [HttpGet]
-        [Route("")]
-        public async Task<IActionResult> Get()
+        public async Task<ActionResult> Get()
         {
             var result = await _unitOfWork.BookRepository.GetAsync();
             return Ok(result);
